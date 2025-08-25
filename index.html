@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Geek and Fitness — Blog</title>
+  <meta name="description" content="Blog Geek + Fitness: treinos, tecnologia, games, gadgets, saúde e desempenho." />
+  <meta name="author" content="Geek and Fitness" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0f1115; --card:#151924; --muted:#a9b1c7; --text:#e6ebff; --acc:#7c5cff; --acc2:#26d07c;
+      --ring: 0 0 0 3px rgba(124,92,255,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;height:100%;}
+    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);}    
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block;border-radius:14px}
+    .container{max-width:1100px;margin:0 auto;padding:24px}
+    header{position:sticky;top:0;background:linear-gradient(180deg,rgba(15,17,21,.96),rgba(15,17,21,.8));backdrop-filter: blur(8px);border-bottom:1px solid #222}
+    .nav{display:flex;gap:16px;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:36px;height:36px;border-radius:12px;background:linear-gradient(135deg,var(--acc),#3aa0ff);display:grid;place-items:center;font-weight:800}
+    .logo span{font-size:18px}
+    .title{font-weight:800;letter-spacing:.3px}
+    .menu{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+    .menu a{padding:10px 12px;border-radius:12px;color:var(--muted)}
+    .menu a.active,.menu a:hover{color:var(--text);background:#1a2030}
+    .right{display:flex;gap:10px;align-items:center}
+    .btn{padding:10px 14px;border-radius:12px;border:1px solid #2a2f3f;background:#121722;color:var(--text);cursor:pointer}
+    .btn:focus{outline:none;box-shadow:var(--ring)}
+
+    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:22px;padding:26px 0}
+    .hero-card{background:linear-gradient(180deg,#161c2c,#121722);border:1px solid #242a3a;border-radius:18px;padding:22px;display:grid;grid-template-columns:1.1fr .9fr;gap:20px;align-items:center}
+    .badge{display:inline-flex;align-items:center;gap:8px;background:#1b2030;border:1px solid #2a3147;color:var(--muted);padding:6px 10px;border-radius:999px;font-size:12px}
+    .hero h1{margin:10px 0 8px;font-size:34px}
+    .hero p{margin:0;color:var(--muted)}
+    .tag{display:inline-flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+    .chip{font-size:12px;border:1px solid #2a3147;padding:6px 10px;border-radius:999px;color:#cbd3eb}
+
+    .grid{display:grid;grid-template-columns:2fr 1fr;gap:22px;margin-top:26px}
+    .posts{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+    .card{background:var(--card);border:1px solid #242a3a;border-radius:18px;padding:16px;display:flex;flex-direction:column;gap:12px}
+    .card h3{margin:0}
+    .meta{display:flex;gap:10px;align-items:center;color:var(--muted);font-size:12px}
+    .meta .dot{width:4px;height:4px;border-radius:999px;background:#616b86}
+    .readmore{margin-top:auto;display:flex;justify-content:flex-end}
+
+    .sidebar{display:flex;flex-direction:column;gap:22px}
+    .widget{background:var(--card);border:1px solid #242a3a;border-radius:18px;padding:16px}
+    .widget h4{margin:0 0 10px}
+    .list{display:grid;gap:12px}
+    .list a{color:#cbd3eb}
+
+    .newsletter input{width:100%;padding:12px 14px;border-radius:12px;border:1px solid #2a2f3f;background:#0f1422;color:var(--text)}
+    .newsletter button{width:100%;margin-top:10px}
+
+    footer{margin-top:36px;padding:22px 0;border-top:1px solid #222;color:var(--muted)}
+
+    .kbd{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;background:#111726;border:1px solid #26304a;color:#b7c3ea;padding:3px 8px;border-radius:8px}
+
+    /* Responsive */
+    @media (max-width: 1024px){
+      .hero{grid-template-columns:1fr}
+      .hero-card{grid-template-columns:1fr}
+      .grid{grid-template-columns:1fr}
+      .posts{grid-template-columns:1fr}
+      .menu{display:none}
+      .menu.mobile{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"><span>GF</span></div>
+        <div class="title">Geek and Fitness</div>
+      </div>
+      <nav class="menu" aria-label="Navegação principal">
+        <a href="#" class="active">Início</a>
+        <a href="#geek">Geek</a>
+        <a href="#fitness">Fitness</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#guias">Guias</a>
+        <a href="#sobre">Sobre</a>
+      </nav>
+      <div class="right">
+        <button class="btn" id="toggleTheme" aria-label="Alternar tema">🌙 Tema</button>
+        <button class="btn" id="menuBtn" aria-label="Abrir menu">☰</button>
+      </div>
+    </div>
+    <div class="container menu mobile" id="mobileMenu" hidden>
+      <a href="#" class="active">Início</a>
+      <a href="#geek">Geek</a>
+      <a href="#fitness">Fitness</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#guias">Guias</a>
+      <a href="#sobre">Sobre</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- HERO -->
+    <section class="hero">
+      <article class="hero-card">
+        <div>
+          <span class="badge">🚀 Geek + 🏋️ Fitness</span>
+          <h1>Bem-vindo ao <em>Geek and Fitness</em></h1>
+          <p>Um blog onde a gente turbina o shape e o cérebro: treinos práticos, gadgets, games, biohacks e produtividade sem enrolação.</p>
+          <div class="tag">
+            <span class="chip">#TreinoInteligente</span>
+            <span class="chip">#Gadgets</span>
+            <span class="chip">#Games</span>
+            <span class="chip">#NutriGeek</span>
+          </div>
+        </div>
+        <div>
+          <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1200&auto=format&fit=crop" alt="Pessoa treinando segurando halteres"/>
+        </div>
+      </article>
+    </section>
+
+    <!-- GRID -->
+    <section class="grid">
+      <div class="posts" id="posts">
+        <!-- Post 1 -->
+        <article class="card" id="post-1">
+          <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=1200&auto=format&fit=crop" alt="Setup gamer com teclado mecânico"/>
+          <h3>[Guia] Setup gamer ergonômico: jogue melhor sem detonar seu ombro</h3>
+          <div class="meta"><span>🕒 8 min</span><span class="dot"></span><span>Categoria: Geek</span></div>
+          <p>Altura do monitor, posição do teclado, apoio de punho e cadeira: veja o check-list de ergonomia para sessões longas sem dor. + bônus: alongamentos rápidos entre partidas.</p>
+          <div class="readmore"><a class="kbd" href="#">Ler mais</a></div>
+        </article>
+        <!-- Post 2 -->
+        <article class="card" id="post-2">
+          <img src="https://images.unsplash.com/photo-1517963628607-235ccdd5476f?q=80&w=1200&auto=format&fit=crop" alt="Pessoa correndo com smartwatch"/>
+          <h3>Smartwatches para treinar: 5 modelos que realmente ajudam (2025)</h3>
+          <div class="meta"><span>🕒 7 min</span><span class="dot"></span><span>Categoria: Reviews</span></div>
+          <p>GPS preciso, métricas úteis (VO₂max, HRV), bateria e integração com apps: o que importar e quais modelos valem a pena em cada faixa de preço.</p>
+          <div class="readmore"><a class="kbd" href="#">Ler mais</a></div>
+        </article>
+        <!-- Post 3 -->
+        <article class="card" id="post-3">
+          <img src="https://images.unsplash.com/photo-1530822847156-5df684ec5d3b?q=80&w=1200&auto=format&fit=crop" alt="Prato com ovos e aveia"/>
+          <h3>Nutrição sem drama: 3 cafés da manhã pra hipertrofia (baratos)</h3>
+          <div class="meta"><span>🕒 5 min</span><span class="dot"></span><span>Categoria: Fitness</span></div>
+          <p>Receitas com ovos, aveia, iogurte e fruta que batem proteína e cabem no bolso. Com macros aproximados e ideias de variação.</p>
+          <div class="readmore"><a class="kbd" href="#">Ler mais</a></div>
+        </article>
+        <!-- Post 4 -->
+        <article class="card" id="post-4">
+          <img src="https://images.unsplash.com/photo-1534361960057-19889db9621e?q=80&w=1200&auto=format&fit=crop" alt="Halteres e controle de videogame lado a lado"/>
+          <h3>Rotina 3x por semana para gamers ocupados</h3>
+          <div class="meta"><span>🕒 6 min</span><span class="dot"></span><span>Categoria: Guias</span></div>
+          <p>Treino full-body de 45 minutos que encaixa entre ranqueadas. Foco em compostos, progressão simples e alongamentos que salvam o pescoço.</p>
+          <div class="readmore"><a class="kbd" href="#">Ler mais</a></div>
+        </article>
+      </div>
+
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <section class="widget">
+          <h4>Sobre o blog</h4>
+          <p>No <strong>Geek and Fitness</strong> a missão é simplificar: tecnologia e treino com linguagem direta, humor na medida e conteúdo que você aplica ainda hoje.</p>
+        </section>
+        <section class="widget newsletter">
+          <h4>Assine a newsletter</h4>
+          <input type="email" placeholder="Seu e-mail" aria-label="E-mail"/>
+          <button class="btn">Quero receber</button>
+          <p style="color:var(--muted);font-size:12px;margin-top:8px">Sem spam. Só conteúdo útil e memes ocasionais.</p>
+        </section>
+        <section class="widget">
+          <h4>Tags populares</h4>
+          <div class="tag">
+            <span class="chip">#Mobilidade</span>
+            <span class="chip">#HiperTrofia</span>
+            <span class="chip">#Cardio</span>
+            <span class="chip">#TecladoMecânico</span>
+            <span class="chip">#Produtividade</span>
+          </div>
+        </section>
+        <section class="widget">
+          <h4>Top da semana</h4>
+          <div class="list">
+            <a href="#">Alongamentos entre partidas: 4 que realmente fazem diferença</a>
+            <a href="#">Creatina: guia direto ao ponto (com doses)</a>
+            <a href="#">Ergonomia para programadores: ajuste seu setup em 10 min</a>
+          </div>
+        </section>
+      </aside>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="card" id="sobre" style="margin-top:26px">
+      <h3>Quem escreve</h3>
+      <p>Sou o <strong>Geek and Fitness</strong>. Por aqui, misturo reviews sinceras de gadgets, treinos eficientes e hacks práticos para melhorar corpo e mente. Se curte uma ponte entre o mundo geek e performance, tá em casa.</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © <span id="year"></span> Geek and Fitness — Feito com ♥️. <span style="opacity:.6">Tema por você 🤝</span>
+    </div>
+  </footer>
+
+  <script>
+    // dark/light toggle (mantém preferência no localStorage)
+    const toggle = document.getElementById('toggleTheme');
+    function setTheme(mode){
+      if(mode==='light'){
+        document.documentElement.style.setProperty('--bg','#f6f7fb');
+        document.documentElement.style.setProperty('--card','#ffffff');
+        document.documentElement.style.setProperty('--text','#0f1220');
+        document.documentElement.style.setProperty('--muted','#5b647b');
+      }else{
+        document.documentElement.style.setProperty('--bg','#0f1115');
+        document.documentElement.style.setProperty('--card','#151924');
+        document.documentElement.style.setProperty('--text','#e6ebff');
+        document.documentElement.style.setProperty('--muted','#a9b1c7');
+      }
+      localStorage.setItem('gf-theme',mode);
+    }
+    toggle.addEventListener('click',()=>{
+      const cur = localStorage.getItem('gf-theme')||'dark';
+      setTheme(cur==='dark'?'light':'dark');
+    });
+    setTheme(localStorage.getItem('gf-theme')||'dark');
+
+    // mobile menu
+    document.getElementById('menuBtn').addEventListener('click',()=>{
+      const m = document.getElementById('mobileMenu');
+      const isHidden = m.hasAttribute('hidden');
+      if(isHidden) m.removeAttribute('hidden'); else m.setAttribute('hidden','');
+    });
+
+    // ano no footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
